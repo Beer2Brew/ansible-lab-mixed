@@ -15,7 +15,6 @@ SUBNET = "10.0.0"
 BRIDGE = "wlp1s0"
 
 servers = [
-    {
         # Windows Servers
     {
         :name => "Windows-Lab-01",
@@ -26,7 +25,7 @@ servers = [
         :mem => "3064",
         :cpu => "2",
         :role => "" # "Grafana, Wordpress"
-    }
+    },
     {
         :name => "Windows-Lab-02",
         :type => "win",
@@ -36,7 +35,7 @@ servers = [
         :mem => "3064",
         :cpu => "2",
         :role => "" # "Grafana, Wordpress"
-    }
+    },
     {
         :name => "Windows-Lab-03",
         :type => "win",
@@ -46,8 +45,9 @@ servers = [
         :mem => "3064",
         :cpu => "2",
         :role => "" # "Grafana, Wordpress"
-    }
+    },
         # Linux Servers
+    {
         :name => "Linux-Lab-01",
         :type => "linux",
         :box => "aspyatkin/ubuntu-18.04-server",
@@ -93,7 +93,7 @@ Vagrant.configure("2") do |config|
             config.vm.box = opts[:box]
             config.vm.box_version = opts[:box_version]
             config.vm.hostname = opts[:name]
-            config.vm.network opts[:network],:bridge => BRIDGE, ip: opts[:eth1], autoconfig: false
+            config.vm.network opts[:network],:bridge => $BRIDGE, ip: opts[:eth1], autoconfig: false
 
             config.vm.provider "virtualbox" do |v|
 
@@ -105,8 +105,9 @@ Vagrant.configure("2") do |config|
 
             # System Configurations
              # config.vm.provision "shell", path: "scripts/base-setup.sh"
-             if opts[:type] == "master"
-               # config.vm.provision "shell", path: "scripts/master.sh"
+             if opts[:type] == "win"
+               config.vm.provision "shell",  privileged: "true", powershell_elevated_interactive: "true", path: "scripts/ConfigureRemotingForAnsible.ps1"
+               # config.vm.provision "shell", path: "scripts/ConfigureRemotingForAnsible.ps1"
              else
               # config.vm.provision "shell", path: "scripts/node.sh"
              end
