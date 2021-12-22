@@ -59,7 +59,7 @@ servers = [
         :role => "" # "Grafana, Wordpress"
     },
     {
-        :name => "Linux-Lab-01",
+        :name => "Linux-Lab-02",
         :type => "linux",
         :box => "aspyatkin/ubuntu-18.04-server",
         :box_version => "1.0.1",
@@ -70,7 +70,7 @@ servers = [
         :role => "" # "Grafana, Wordpress"
     },
     {
-        :name => "Linux-Lab-01",
+        :name => "Linux-Lab-03",
         :type => "linux",
         :box => "aspyatkin/ubuntu-18.04-server",
         :box_version => "1.0.1",
@@ -104,11 +104,11 @@ Vagrant.configure("2") do |config|
             end
 
             # System Configurations
-             config.vm.provision "shell", path: "scripts/base-setup.sh"
+             # config.vm.provision "shell", path: "scripts/base-setup.sh"
              if opts[:type] == "master"
-               config.vm.provision "shell", path: "scripts/master.sh"
+               # config.vm.provision "shell", path: "scripts/master.sh"
              else
-               config.vm.provision "shell", path: "scripts/node.sh"
+              # config.vm.provision "shell", path: "scripts/node.sh"
              end
            end
          end
