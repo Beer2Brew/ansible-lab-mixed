@@ -15,6 +15,17 @@ SUBNET = "10.0.0"
 BRIDGE = "wlp111s0"
 
 servers = [
+    # Ansible Tower Servers
+    {
+        :name => "ansible-tower-server",
+        :type => "linux",
+        :box => "ansible/tower",
+        :network => "public_network",
+        :eth1 => "#{SUBNET}.200",
+        :mem => "8192",
+        :cpu => "3",
+        :role => "" # "Web, Database"
+    },
         # Windows Servers
     {
         :name => "Windows-Lab-01",
@@ -54,7 +65,7 @@ servers = [
         :box_version => "1.0.1",
         :network => "public_network", #"private_network, bridged" "public_network" "bridged"
         :eth1 => "#{SUBNET}.204", # Network needs to match your home network
-        :mem => "3064",
+        :mem => "2048",
         :cpu => "2",
         :role => "" # "Web, Database"
     },
@@ -65,7 +76,7 @@ servers = [
         :box_version => "1.0.1",
         :network => "public_network",
         :eth1 => "#{SUBNET}.205",
-        :mem => "3064",
+        :mem => "2048",
         :cpu => "2",
         :role => "" # "Web, Database"
     },
@@ -76,7 +87,7 @@ servers = [
         :box_version => "1.0.1",
         :network => "public_network",
         :eth1 => "#{SUBNET}.206",
-        :mem => "3064",
+        :mem => "2048",
         :cpu => "2",
         :role => "" # "Web, Database"
     }
