@@ -21,10 +21,10 @@ tar -xzvf ansible-tower-setup-3.8.5-1.tar.gz -C /tmp
 mkdir /tmp/ansible-tower-setup-3.8.5-1/tower-backup
 
 # Initial backup
-/tmp/ansible-tower-setup-3.8.5-1/setup.sh '-e backup_dest=/tmp/ansible-tower-setup-3.8.5-1/tower-backup' -b
+sudo /tmp/ansible-tower-setup-3.8.5-1/setup.sh '-e backup_dest=/tmp/ansible-tower-setup-3.8.5-1/tower-backup' -b
 
 # Restore from lab backup
-/tmp/ansible-tower-setup-3.8.5-1/setup.sh '-e restore_backup_file=/vagrant/tower/tower-backup-2021-12-28-02:34:35.tar.gz' -r
+sudo /tmp/ansible-tower-setup-3.8.5-1/setup.sh '-e restore_backup_file=/vagrant/tower/tower-backup-2021-12-28-02:34:35.tar.gz' -r
 
 
 
