@@ -24,7 +24,7 @@ servers = [
         :eth1 => "#{SUBNET}.200",
         :mem => "8192",
         :cpu => "3",
-        :role => "" # "Web, Database"
+        :role => "ansible.tower" # "Web, Database"
     },
         # Windows Servers
     {
@@ -119,6 +119,11 @@ Vagrant.configure("2") do |config|
                config.vm.provision "shell",  privileged: "true", powershell_elevated_interactive: "true", path: "scripts/ConfigureRemotingForAnsible.ps1"
              else
               # config.vm.provision "shell", path: "scripts/node.sh"
+             end
+             
+             # Special Lab configrations for Ansible Tower
+             if opts[:role] == "ansible.tower"
+                config.vm.provision "shell", path: "scripts/ansible-lab-setup.sh"
              end
            end
          end
