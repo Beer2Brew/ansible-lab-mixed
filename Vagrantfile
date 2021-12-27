@@ -11,7 +11,12 @@
 # GitHub Repo   : https://github.com/jpaulcox/ansible-lab-mixed
 ###################################################################
 
+# This is configured to use your network and takes the first .200 IPs
+# Change SUBNET to work with your internet
 SUBNET = "10.0.0"
+
+# This script was setup to run on an Ubuntu server and with a wireless network card (wlp111s0). 
+# Change this to the appropriate card that matches your Host System
 BRIDGE = "wlp111s0"
 
 servers = [
